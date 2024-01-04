@@ -1,3 +1,3 @@
-# Initialize the project
+### Initialize the project
 
-# Connecting MySQL to node
+### Connecting MySQL to node
