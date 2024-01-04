@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Shortid</title>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          margin-top: 10px;
+        }
+    
+        th, td {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+    
+        th {
+          background-color: #f2f2f2;
+        }
+      </style>
+</head>
+<body>
+    <h3>URL Shortner</h3>
+    <form method="POST" action="/url">
+        <label>Enter your Original URL</label>
+        <input
+            type="text"
+            name="url",
+            placeholder="https://example.com"
+        />
+        <button type="submit">Generate</button>
+    </form>
+    <div>
+        <% if (locals.urlData) { %>
+         
+        <table>
+            <thead>
+              <tr>
+                <th>Serial Number</th>
+                <th>Short ID</th>
+                <th>Original URL</th>
+                <th>Visit History</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% urlData.forEach((data, index) => { %>
+                    <tr>
+                        <td><%= index+1 %></td>
+                        <td><%= data.shortId %></td>
+                        <td><%= data.redirectUrl %></td>
+                        <td><%= data.visitHistory.length %></td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+
+        <% } %>
+    </div>
+</body>
+</html>
